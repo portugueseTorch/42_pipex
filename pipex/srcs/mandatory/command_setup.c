@@ -6,7 +6,7 @@
 /*   By: gda-cruz <gda-cruz@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 18:46:57 by gda-cruz          #+#    #+#             */
-/*   Updated: 2022/12/16 16:18:01 by gda-cruz         ###   ########.fr       */
+/*   Updated: 2022/12/18 23:21:41 by gda-cruz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,19 +36,13 @@ void	setup_cmd(a_t *a)
 		err_handler(a, 2, "Error getting command path.\n");
 }
 
-void	get_cmd_path(a_t *a)
+static int	valid_path(a_t *a)
 {
 	char	*temp;
 	int		ok;
 	int		i;
-
+	
 	i = -1;
-	ok = access(a->cmds[0], F_OK);
-	if (ok == 0)
-	{
-		a->cmd_path = ft_strdup(a->cmds[0]);
-		return ;
-	}
 	while (a->path[++i])
 	{
 		temp = ft_strjoin(a->path[i], a->cmds[0]);
@@ -62,8 +56,25 @@ void	get_cmd_path(a_t *a)
 		{
 			a->cmd_path = ft_strdup(temp);
 			free(temp);
-			return ;
+			return (1);
 		}
 	}
+	return (0);
+}
+
+void	get_cmd_path(a_t *a)
+{
+	int		ok;
+	int		valid;
+
+	ok = access(a->cmds[0], F_OK);
+	if (ok == 0)
+	{
+		a->cmd_path = ft_strdup(a->cmds[0]);
+		return ;
+	}
+	valid = valid_path(a);
+	if (valid)
+		return ;
 	err_handler(a, 2, "Error getting command path\n");
 }

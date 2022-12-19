@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free.c                                             :+:      :+:    :+:   */
+/*   free_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gda-cruz <gda-cruz@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/10 10:18:47 by gda-cruz          #+#    #+#             */
-/*   Updated: 2022/12/16 16:27:22 by gda-cruz         ###   ########.fr       */
+/*   Updated: 2022/12/18 23:51:07 by gda-cruz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,6 @@ void	err_handler(a_t *a, int err_code, char *err)
 		free_one(a);
 	else if (err_code == 2)
 		free_two(a);
-	ft_putstr_fd(err, STDERR_FILENO);
+	perror(err);
 	exit(EXIT_FAILURE);
 }

@@ -6,7 +6,7 @@
 #    By: gda-cruz <gda-cruz@student.42lisboa.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/10 15:47:55 by gda-cruz          #+#    #+#              #
-#    Updated: 2022/12/16 17:32:21 by gda-cruz         ###   ########.fr        #
+#    Updated: 2022/12/18 23:26:50 by gda-cruz         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,6 +50,7 @@ all: $(NAME)
 $(NAME): $(BIN)
 
 $(BIN):	$(OBJ) | $(BIN_DIR)
+	@echo ""
 	@echo "$(YELLOW)  Preparing Pipex...$(RESET)"
 	@make -s -C $(LIBFT_DIR)
 	@echo "$(LIGHT_GREEN)  Libft successfully compiled.$(RESET)"
@@ -75,6 +76,7 @@ $(BUILD_DIR):
 		@mkdir -p $(OBJ_DIR) $(B_OBJ_DIR) $(BIN_DIR)
 
 bonus: $(B_OBJ) | $(BIN_DIR)
+	@echo ""
 	@echo "$(YELLOW)  Preparing Pipex...$(RESET)"
 	@make -s -C $(LIBFT_DIR)
 	@echo "$(LIGHT_GREEN)  Libft successfully compiled.$(RESET)"
@@ -98,18 +100,18 @@ fclean: clean
 re: fclean all
 
 mandatory_path: all
-	@./build/bin/pipex input.txt "/bin/grep give" "wc -l" test.txt
+	@./build/bin/pipex input.txt "/bin/grep give" "wc -l" output.txt
 
 mandatory_normal: all
-	@./build/bin/pipex input.txt "grep give" "wc -l" test.txt
+	@./build/bin/pipex input.txt "grep give" "wc -l" output.txt
 
 bonus_mc1: bonus
-	@./build/bin/pipex input.txt "grep give" "grep you" "wc -l" test.txt
+	@./build/bin/pipex input.txt "grep give" "grep you" "wc -l" output.txt
 
 bonus_mc2: bonus
-	@./build/bin/pipex input.txt "ls -l" "grep .pdf" "grep pipex" "wc -l" test.txt
+	@./build/bin/pipex input.txt "ls -l" "grep .pdf" "grep pipex" "wc -l" output.txt
 
 bonus_hd: bonus
-	@./build/bin/pipex here_doc EOF "grep azul" "grep bicicleta" "wc -l" test.txt
+	@./build/bin/pipex here_doc EOF "grep azul" "grep bicicleta" "wc -l" output.txt
 
 .PHONY: all clean fclean re bonus
