@@ -1,4 +1,11 @@
-# 42_pipex
-This project aims to deepen your understanding of the two concepts that you already know: Redirections and Pipes. It is an introductory project for the bigger UNIX projects that will appear later on in the cursus.
-
-To see my notes on the subject, check out my [Notion Notes](https://apple-celestite-e58.notion.site/Pipex-cb2f8fa8623f43d6b24b445a156c76a9)!
+[Pipex cb2f8fa8623f43d6b24b445a156c76a9.md](https://github.com/portugueseTorch/42_pipex/files/10278836/Pipex.cb2f8fa8623f43d6b24b445a156c76a9.md)
+[Coding d37091112d3046819240906479e22081.md](https://github.com/portugueseTorch/42_pipex/files/10278839/Coding.d37091112d3046819240906479e22081.md)
+[Theory 5bcbc028009a4b6f8017f888c4aa0efc.md](https://github.com/portugueseTorch/42_pipex/files/10278841/Theory.5bcbc028009a4b6f8017f888c4aa0efc.md)
+[command_setup c ef289df5983246fbb7dba5e3d914c008.md](https://github.com/portugueseTorch/42_pipex/files/10278843/command_setup.c.ef289df5983246fbb7dba5e3d914c008.md)
+[free c 8e22e90724e5473384806667a73feb84.md](https://github.com/portugueseTorch/42_pipex/files/10278844/free.c.8e22e90724e5473384806667a73feb84.md)
+[main c aeb1355ca380457ea9e5e949e434fc13.md](https://github.com/portugueseTorch/42_pipex/files/10278845/main.c.aeb1355ca380457ea9e5e949e434fc13.md)
+[Recipe cdf91e38cd794de8b4ed411942f26206.md](https://github.com/portugueseTorch/42_pipex/files/10278846/Recipe.cdf91e38cd794de8b4ed411942f26206.md)
+[setup c b2e45eb7a4fa414eb8d0f58d426f771e.md](https://github.com/portugueseTorch/42_pipex/files/10278847/setup.c.b2e45eb7a4fa414eb8d0f58d426f771e.md)
+[Functions 2d81552c7500443188b942e8ba4f5306.md](https://github.com/portugueseTorch/42_pipex/files/10278848/Functions.2d81552c7500443188b942e8ba4f5306.md)
+[Inter-Process Communication 41b01c40a4164f278503cd5dbb97d34f.md](https://github.com/portugueseTorch/42_pipex/files/10278849/Inter-Process.Communication.41b01c40a4164f278503cd5dbb97d34f.md)
+[UNIX Processes 362981cef0c04ac2b4a1b684efb291b5.md](https://github.com/portugueseTorch/42_pipex/files/10278850/UNIX.Processes.362981cef0c04ac2b4a1b684efb291b5.md)
