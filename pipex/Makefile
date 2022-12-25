@@ -6,7 +6,7 @@
 #    By: gda-cruz <gda-cruz@student.42lisboa.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/10 15:47:55 by gda-cruz          #+#    #+#              #
-#    Updated: 2022/12/25 13:38:38 by gda-cruz         ###   ########.fr        #
+#    Updated: 2022/12/25 14:03:08 by gda-cruz         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,10 +36,8 @@ OBJ			=	$(SRC:srcs/mandatory/%.c=$(OBJ_DIR)/%.o)
 B_OBJ		=	$(B_SRC:srcs/bonus/%.c=$(B_OBJ_DIR)/%.o)
 INC_DIR		=	inc
 BUILD_DIR	=	./build
-BIN_DIR		=	$(BUILD_DIR)/bin
 OBJ_DIR		=	$(BUILD_DIR)/objects
 B_OBJ_DIR	=	$(BUILD_DIR)/b_objects
-BIN			=	$(BIN_DIR)/$(NAME)
 
 CC = gcc
 
@@ -47,9 +45,7 @@ CFLAGS = -Wall -Wextra -Werror -I$(INC_DIR) -I$(LIBFT_DIR)
 
 all: $(NAME)
 
-$(NAME): $(BIN)
-
-$(BIN):	$(OBJ) | $(BIN_DIR)
+$(NAME):	$(OBJ)
 	@echo ""
 	@echo "$(YELLOW)  Preparing Pipex...$(RESET)"
 	@make -s -C $(LIBFT_DIR)
@@ -73,16 +69,15 @@ $(OBJ_DIR)/%.o:	srcs/mandatory/%.c | $(BUILD_DIR)
 
 $(BUILD_DIR):
 		@mkdir -p $(BUILD_DIR)
-		@mkdir -p $(OBJ_DIR) $(B_OBJ_DIR) $(BIN_DIR)
+		@mkdir -p $(OBJ_DIR) $(B_OBJ_DIR)
 
-bonus: $(B_OBJ) | $(BIN_DIR)
+bonus: $(B_OBJ)
 	@echo ""
-	@echo "$(YELLOW)  Preparing Pipex...$(RESET)"
+	@echo "$(YELLOW)  Preparing Bonus...$(RESET)"
 	@make -s -C $(LIBFT_DIR)
 	@echo "$(LIGHT_GREEN)  Libft successfully compiled.$(RESET)"
 	@$(CC) $(CFLAGS) -o $(NAME) $(^) -L$(LIBFT_DIR) -lft
-	@echo "$(LIGHT_GREEN)  Pipex successfully compiled.\n$(RESET)"
-	@mv pipex build/bin
+	@echo "$(LIGHT_GREEN)  Bonus successfully compiled.\n$(RESET)"
 
 $(B_OBJ_DIR)/%.o:	srcs/bonus/%.c | $(BUILD_DIR)
 	@$(CC) $(CFLAGS) -c $(^) -o $(@)
@@ -94,30 +89,30 @@ clean:
 
 fclean: clean
 	@make fclean -s -C $(LIBFT_DIR)
-	@rm -rf build
+	@rm -rf build $(NAME)
 	@echo "$(RED)All Pipex files removed.$(RESET)"
 
 re: fclean all
 
 mandatory_path: all
-	@valgrind ./build/bin/pipex input.txt "/bin/grep give" "wc -l" output.txt
+	@valgrind ./pipex input.txt "/bin/grep give" "wc -l" output.txt
 
 mandatory_normal: all
-	@./build/bin/pipex input.txt "grep give" "wc -l" output.txt
+	@./pipex input.txt "grep give" "wc -l" output.txt
 	
 mandatory_wpath: all
-	@valgrind ./build/bin/pipex input.txt "/bin/gret give" "wc -l" output.txt
+	@valgrind ./pipex input.txt "/bin/gret give" "wc -l" output.txt
 
 mandatory_wnormal: all
-	@valgrind ./build/bin/pipex input.txt "crep give" "wc -l" output.txt
+	@valgrind ./pipex input.txt "crep give" "wc -l" output.txt
 
 bonus_mc1: bonus
-	@./build/bin/pipex input.txt "grep give" "grep you" "wc -l" output.txt
+	@./pipex input.txt "grep give" "grep you" "wc -l" output.txt
 
 bonus_mc2: bonus
-	@valgrind ./build/bin/pipex input.txt "ls -l" "rep .txt" "grep input" "wc -l" output.txt
+	@valgrind ./pipex input.txt "ls -l" "rep .txt" "grep input" "wc -l" output.txt
 
 bonus_hd: bonus
-	@./build/bin/pipex here_doc EOF "grep azul" "grep bicicleta" "wc -l" output.txt
+	@./pipex here_doc EOF "grep azul" "grep bicicleta" "wc -l" output.txt
 
 .PHONY: all clean fclean re bonus
