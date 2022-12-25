@@ -6,7 +6,7 @@
 /*   By: gda-cruz <gda-cruz@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 18:46:57 by gda-cruz          #+#    #+#             */
-/*   Updated: 2022/12/19 15:45:19 by gda-cruz         ###   ########.fr       */
+/*   Updated: 2022/12/25 13:09:11 by gda-cruz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,10 @@ void	setup_cmd(t_a *a)
 {
 	a->cmds = ft_split(a->args[a->i], ' ');
 	if (!a->cmds)
-		err_handler(a, 2, "Error getting commands.\n");
+		err_handler(a, 2, "Error getting commands");
 	get_cmd_path(a);
 	if (!a->cmd_path)
-		err_handler(a, 2, "Error getting command path.\n");
+		err_handler(a, 2, "Error getting command path");
 }
 
 static int	valid_path(t_a *a)
@@ -76,5 +76,5 @@ void	get_cmd_path(t_a *a)
 	valid = valid_path(a);
 	if (valid)
 		return ;
-	err_handler(a, 2, "Error getting command path\n");
+	err_handler(a, 2, "Error getting command path");
 }

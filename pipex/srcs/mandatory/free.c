@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_bonus.c                                       :+:      :+:    :+:   */
+/*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gda-cruz <gda-cruz@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/10 10:18:47 by gda-cruz          #+#    #+#             */
-/*   Updated: 2022/12/19 15:41:31 by gda-cruz         ###   ########.fr       */
+/*   Updated: 2022/12/25 13:28:28 by gda-cruz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,16 @@ void	free_two(t_a *a)
 	while (a->path[i])
 		free(a->path[i++]);
 	free(a->path);
+	if (a->pid == 0)
+	{
+		if (a->cmds)
+		{
+			i = 0;
+			while (a->cmds[i])
+				free(a->cmds[i++]);
+			free(a->cmds);
+		}
+	}
 }
 
 void	err_handler(t_a *a, int err_code, char *err)

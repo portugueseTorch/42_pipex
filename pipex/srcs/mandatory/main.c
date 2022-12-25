@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main_bonus.c                                       :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gda-cruz <gda-cruz@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 10:31:53 by gda-cruz          #+#    #+#             */
-/*   Updated: 2022/12/19 15:41:43 by gda-cruz         ###   ########.fr       */
+/*   Updated: 2022/12/25 12:56:14 by gda-cruz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,10 @@
 void	run_cmd(t_a *a, char **envp)
 {
 	if (pipe(a->pipe_fd) == -1)
-		err_handler(a, 2, "Error creating the pipe.\n");
+		err_handler(a, 2, "Error creating the pipe");
 	a->pid = fork();
 	if (a->pid == -1)
-		err_handler(a, 2, "Error forking.\n");
+		err_handler(a, 2, "Error forking");
 	if (a->pid == 0)
 	{
 		filter_cmd(a);

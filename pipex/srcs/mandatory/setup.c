@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   setup_bonus.c                                      :+:      :+:    :+:   */
+/*   setup.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gda-cruz <gda-cruz@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 10:08:48 by gda-cruz          #+#    #+#             */
-/*   Updated: 2022/12/19 15:41:54 by gda-cruz         ###   ########.fr       */
+/*   Updated: 2022/12/25 12:56:01 by gda-cruz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,12 +36,12 @@ void	pre_hd(t_a *a, int argc, char **argv)
 	a->out_file = open(argv[argc - 1], O_WRONLY | O_TRUNC | O_CREAT, 0666);
 	temp = open(".store", O_WRONLY | O_TRUNC | O_CREAT, 0666);
 	if (a->out_file == -1 || temp == -1)
-		err_handler(a, 0, "Error while setting up.\n");
+		err_handler(a, 0, "Error while setting up");
 	heredoc(argv, temp);
 	close(temp);
 	a->in_file = open(".store", O_RDONLY);
 	if (a->in_file == -1)
-		err_handler(a, 0, "Error while setting up.\n");
+		err_handler(a, 0, "Error while setting up");
 }
 
 void	heredoc(char **argv, int fd)
@@ -54,7 +54,7 @@ void	heredoc(char **argv, int fd)
 	lim = ft_strjoin(temp, "\n");
 	while (1)
 	{
-		write(1, "heredoc> ", 9);
+		write(1, "> ", 2);
 		line = get_next_line(0);
 		if (ft_strlen(line) == ft_strlen(lim))
 			if (!ft_strncmp(lim, line, ft_strlen(lim)))
@@ -73,7 +73,7 @@ void	no_heredoc(t_a *a, int argc, char **argv)
 	a->in_file = open(argv[1], O_RDONLY);
 	a->out_file = open(argv[argc - 1], O_WRONLY | O_TRUNC | O_CREAT, 0666);
 	if (a->in_file == -1 || a->out_file == -1)
-		err_handler(a, 0, "Error while setting up.\n");
+		err_handler(a, 0, "Error while setting up");
 }
 
 char	**path_finder(t_a *a, char **envp)
@@ -93,7 +93,7 @@ char	**path_finder(t_a *a, char **envp)
 		i++;
 	}
 	if (!line)
-		err_handler(a, 1, "Error while setting up.\n");
+		err_handler(a, 1, "Error while setting up");
 	path = ft_split(line, ':');
 	free(line);
 	return (path);

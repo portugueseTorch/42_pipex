@@ -6,7 +6,7 @@
 #    By: gda-cruz <gda-cruz@student.42lisboa.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/10 15:47:55 by gda-cruz          #+#    #+#              #
-#    Updated: 2022/12/19 15:47:47 by gda-cruz         ###   ########.fr        #
+#    Updated: 2022/12/25 13:38:38 by gda-cruz         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,7 +43,7 @@ BIN			=	$(BIN_DIR)/$(NAME)
 
 CC = gcc
 
-CFLAGS = -Wall -Wextra -Werror -fsanitize=address -I$(INC_DIR) -I$(LIBFT_DIR)
+CFLAGS = -Wall -Wextra -Werror -I$(INC_DIR) -I$(LIBFT_DIR)
 
 all: $(NAME)
 
@@ -100,16 +100,22 @@ fclean: clean
 re: fclean all
 
 mandatory_path: all
-	@./build/bin/pipex input.txt "/bin/grep give" "wc -l" output.txt
+	@valgrind ./build/bin/pipex input.txt "/bin/grep give" "wc -l" output.txt
 
 mandatory_normal: all
 	@./build/bin/pipex input.txt "grep give" "wc -l" output.txt
+	
+mandatory_wpath: all
+	@valgrind ./build/bin/pipex input.txt "/bin/gret give" "wc -l" output.txt
+
+mandatory_wnormal: all
+	@valgrind ./build/bin/pipex input.txt "crep give" "wc -l" output.txt
 
 bonus_mc1: bonus
 	@./build/bin/pipex input.txt "grep give" "grep you" "wc -l" output.txt
 
 bonus_mc2: bonus
-	@./build/bin/pipex input.txt "ls -l" "grep .txt" "grep input" "wc -l" output.txt
+	@valgrind ./build/bin/pipex input.txt "ls -l" "rep .txt" "grep input" "wc -l" output.txt
 
 bonus_hd: bonus
 	@./build/bin/pipex here_doc EOF "grep azul" "grep bicicleta" "wc -l" output.txt
