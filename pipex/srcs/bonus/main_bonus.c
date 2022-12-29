@@ -6,7 +6,7 @@
 /*   By: gda-cruz <gda-cruz@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 10:31:53 by gda-cruz          #+#    #+#             */
-/*   Updated: 2022/12/25 12:56:14 by gda-cruz         ###   ########.fr       */
+/*   Updated: 2022/12/28 17:00:51 by gda-cruz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@ void	run_cmd(t_a *a, char **envp)
 		filter_cmd(a);
 		setup_cmd(a);
 		execve(a->cmd_path, a->cmds, envp);
+		err_handler(a, 2, "Error executing command");
 	}
 	close(a->pipe_fd[1]);
-	wait(NULL);
 	dup2(a->pipe_fd[0], STDIN_FILENO);
 }
 
@@ -46,6 +46,8 @@ int	main(int argc, char **argv, char **envp)
 		run_cmd(&a, envp);
 		a.i++;
 	}
+	while (a.i--)
+		wait(NULL);
 	free_two(&a);
 	return (0);
 }

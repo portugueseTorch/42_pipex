@@ -6,7 +6,7 @@
 #    By: gda-cruz <gda-cruz@student.42lisboa.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/10 15:47:55 by gda-cruz          #+#    #+#              #
-#    Updated: 2022/12/28 17:03:59 by gda-cruz         ###   ########.fr        #
+#    Updated: 2022/12/29 14:38:27 by gda-cruz         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,7 +41,7 @@ B_OBJ_DIR	=	$(BUILD_DIR)/b_objects
 
 CC = gcc
 
-CFLAGS = -Wall -Wextra -Werror -I$(INC_DIR) -I$(LIBFT_DIR) -g -fsanitize=address
+CFLAGS = -Wall -Wextra -Werror -I$(INC_DIR) -I$(LIBFT_DIR)
 
 all: $(NAME)
 
@@ -107,7 +107,7 @@ mandatory_wnormal: all
 	@valgrind ./pipex input.txt "crep give" "wc -l" output.txt
 
 bonus_mc1: bonus
-	@./pipex input.txt "grep give" "grep you" "wc -l" output.txt
+	@valgrind ./pipex input.txt "grep give" "grep you" "wc -l" output.txt
 
 bonus_mc2: bonus
 	@valgrind ./pipex input.txt "ls -l" "rep .txt" "grep input" "wc -l" output.txt
